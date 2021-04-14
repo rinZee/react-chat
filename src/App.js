@@ -38,17 +38,28 @@ function App() {
 
 function SignIn() {
   const signInWithGoogle = () => {
+    console.log('clicked');
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   }
    return (
-     <button onClick={signInWithGoogle}>Sign in with Google</button>
+     <div className="google-btn" onClick={signInWithGoogle}>
+       <div class="google-icon-wrapper">
+    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+  </div>
+  <p class="btn-text"><b>Sign in with google</b></p>
+     </div> 
    )
 }
 
 function SignOut() {
   return auth.currentUser && (
-    <button onClick={() => auth.signOut()}>Sign Out</button>
+    <div className="signout-btn" onClick={() => auth.signOut()}>
+       <div class="google-icon-wrapper">
+    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+  </div>
+  <p class="btn-text"><b>Sign Out</b></p>
+     </div> 
   )
 }
 
@@ -72,13 +83,15 @@ function ChatRoom() {
   }
   return (
     <>
-    <div>
-{messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+    <SignOut />
+    <div className={'Messages'}>
+{messages && messages.map(msg => <ChatMessage className={'submit'} key={msg.id} message={msg} />)}
     </div>
 
-    <form onSubmit={sendMessage}>
-      <input value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
-<button type='submit'></button>
+    <form className={'form'}onSubmit={sendMessage}>
+      <input className={'input'} value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
+<button  className={'submit'} type='submit'>send</button>
+
     </form>
     </>
   )
@@ -91,8 +104,9 @@ function ChatMessage(props) {
 
 return (
   <div className={`message ${messageClass}`}>
-    <img src={photoURL} />
-<p>{text}</p>
+    <img src={photoURL} alt='' />
+    <div className={'chat'}><p>{text}</p>
+</div>
     </div>
   
 ) 

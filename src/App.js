@@ -26,7 +26,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
+      {user ? <SignOut /> : ''}
+
       </header>
       <section>
       
@@ -43,23 +44,13 @@ function SignIn() {
     auth.signInWithPopup(provider);
   }
    return (
-     <div className="google-btn" onClick={signInWithGoogle}>
-       <div class="google-icon-wrapper">
-    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-  </div>
-  <p class="btn-text"><b>Sign in with google</b></p>
-     </div> 
+     <button className={'btn'} onClick={signInWithGoogle}>Sign in with google</button> 
    )
 }
 
 function SignOut() {
   return auth.currentUser && (
-    <div className="signout-btn" onClick={() => auth.signOut()}>
-       <div class="google-icon-wrapper">
-    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-  </div>
-  <p class="btn-text"><b>Sign Out</b></p>
-     </div> 
+    <button className={'btn'} onClick={() => auth.signOut()}>signout</button>
   )
 }
 
@@ -83,7 +74,6 @@ function ChatRoom() {
   }
   return (
     <>
-    <SignOut />
     <div className={'Messages'}>
 {messages && messages.map(msg => <ChatMessage className={'submit'} key={msg.id} message={msg} />)}
     </div>
@@ -105,8 +95,8 @@ function ChatMessage(props) {
 return (
   <div className={`message ${messageClass}`}>
     <img src={photoURL} alt='' />
-    <div className={'chat'}><p>{text}</p>
-</div>
+    <p>{text}</p>
+
     </div>
   
 ) 

@@ -1,6 +1,7 @@
 :root {
   --background: #282c34;
   --white: #fff;
+  --black: #000;
   --google-blue: #4285f4;
   --button-active-blue: #1669f2;
 }
@@ -8,8 +9,18 @@ body {
   background-color: var(--background);
 }
 
+.App {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: var(--black);
+}
+
 .btn {
-  background-color: var(--google-blue); /* Green */
+  background-color: var(--google-blue);
   border: none;
   color: white;
   padding: 15px 32px;
@@ -23,18 +34,9 @@ body {
 .btn:hover {
   box-shadow: 0 0 6px var(--google-blue);
 }
+
 .btn:active {
   background: var(--button-active-blue);
-}
-
-.App {
-  text-align: center;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.form {
-  height: 42px;
 }
 
 .Messages {
@@ -42,7 +44,7 @@ body {
   min-height: 500px;
   padding: 0 5%;
   width: 90%;
-  max-width: 1280px;
+  max-width: 800px;
 }
 
 .message {
@@ -72,4 +74,8 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+.form {
+  height: 42px;
 }
